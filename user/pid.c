@@ -35,12 +35,10 @@ float calc_pid_r(int err,float cur_pwm){
 	return cur_pwm;
 }
 
-#define k_scale_d 1.5
-//350 400     500
-// 1   1.341  1.4
-#define kp_d 0.0248*k_scale_d
-#define ki_d 0.0005*k_scale_d
-#define kd_d 0.03*k_scale_d
+
+#define kp_d (kp_direction/100000.0)
+#define ki_d (ki_direction/100000.0)
+#define kd_d (kd_direction/100000.0)
 //0.0293 0.00074 0.00035
 #define max_error_sum 6
 #define car_k_range 0.125

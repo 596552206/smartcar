@@ -52,20 +52,31 @@ int main (void){//主程序
 	m_Encoder_Init_2(); //编码器初始化
 	m_Encoder_Init_TIM1(); //编码器初始化
 	int counter = 0;
-	
+	u8 logs[1000] = {0};
+	float logave = 0;
+	float jfc = 0;
+	int logctr = 0;
 	while(1){
 		delay_ms(10);
 		if(SMART_CAR_MODE == SMART_CAR_MODE_AUTO){
 			tracking();
+					if((counter++)==20){
+						logave += logs[logctr++] = car_k*1000;
+						counter=0;
+					}
 		}else{
 			remoting();
-		}
-		
-		if((counter++)==200){
-			int left = read_encoder_l();
-			int right = read_encoder_r();
-			printf("sl:%d,sr:%d,k:%f;\n",left,right,car_k);
-			counter=0;
+				if(logctr!=0){
+					logave/=logctr;
+					for(int i=0;i<logctr;i++){
+						jfc += (logs[i]-logave)*(logs[i]-logave);
+					}
+					jfc/=logctr;
+					printf("JFC=%f.\n",jfc);
+					logctr = 0;
+					logave = 0;
+					jfc = 0;
+				}
 		}
 	}
 //int spd = 150;
@@ -88,10 +99,12 @@ int main (void){//主程序
 
 
 void tracking(){
+			//u8 old_offset = car_offset;
 			get_offset();
 			if(car_offset)calc_speed();
 			else{
 				//car_direction=0;
+				//如果脱离轨道，有可能是轨道间断，交会的地方，可以先保持行进一段时间，再停车。
 				car_k = 0;
 				CAR_STOP;
 			}

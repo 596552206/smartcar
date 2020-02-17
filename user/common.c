@@ -10,3 +10,7 @@ u8 car_offset = 0;
 int car_direction = 0;
 float car_k = 0.0; //曲率
 float direction_x=1,direction_y=1;
+int kp_direction = 28000;
+int ki_direction = 50;
+int kd_direction = 0;
+short IDEAL_AUTO_SPEED = 400;

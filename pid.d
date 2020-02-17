@@ -30,3 +30,4 @@
 ..\pid.o: ..\fwlib\inc\stm32f10x_usart.h
 ..\pid.o: ..\fwlib\inc\stm32f10x_wwdg.h
 ..\pid.o: ..\fwlib\inc\misc.h
+..\pid.o: common.h

@@ -37,8 +37,8 @@ void remoterHandler(char data){
 //				printf("RIGHT (%d)",SPEED_FOR_REMOTER);
 //			break;
 			case 'e' :
-				CAR_BRAKE;
-				printf("BRAKED");
+					CAR_BRAKE;
+					printf("BRAKED");
 			break;
 			case 'f' :
 				CAR_STOP;
@@ -46,11 +46,11 @@ void remoterHandler(char data){
 			break;
 			case 'g' :
 				SPEED_FOR_REMOTER = HIGH_SPEED;
-				printf("SWITCHED TO HIGH SPEED");
+				printf("SWITCHED TO HIGH SPEED");			
 			break;
 			case 'h' :
 				SPEED_FOR_REMOTER = MEDIUM_SPEED;
-				printf("SWITCHED TO MEDIUM SPEED");
+				printf("SWITCHED TO MEDIUM SPEED");			
 			break;
 			case 'i' :
 				SPEED_FOR_REMOTER = LOW_SPEED;
@@ -62,15 +62,47 @@ void remoterHandler(char data){
 			break;
 			case 'k' :
 				CAR_FORWARD_RIGHT(SPEED_FOR_REMOTER);
-				printf("FORWARD RIGHT (%d)",SPEED_FOR_REMOTER);
+				printf("FORWARD RIGHT (%d)",SPEED_FOR_REMOTER);		
 			break;
 			case 'l' :
-				SMART_CAR_MODE = SMART_CAR_MODE_AUTO;
-				printf("MODE AUTO");
+					SMART_CAR_MODE = SMART_CAR_MODE_AUTO;
+					printf("MODE AUTO");
 			break;
 			case 'm' :
-				SMART_CAR_MODE = SMART_CAR_MODE_REMOTE;
-				printf("MODE REMOTE");
+					SMART_CAR_MODE = SMART_CAR_MODE_REMOTE;
+					printf("MODE REMOTE");
+			break;
+			case 'n' :
+					kp_direction += 50;
+					printf("nowkp=%d.\n",kp_direction);
+			break;
+			case 'o' :
+					kp_direction -= 50;
+					printf("nowkp=%d.\n",kp_direction);
+			break;
+			case 'p' :
+					ki_direction += 10;
+					printf("nowki=%d.\n",ki_direction);
+			break;
+			case 'q' :
+					ki_direction -= 1;
+					printf("nowki=%d.\n",ki_direction);
+			break;
+			case 'r' :
+					kd_direction += 100;
+					printf("nowkd=%d.\n",kd_direction);
+			break;
+			case 's' :
+					kd_direction -= 100;
+					printf("nowkd=%d.\n",kd_direction);
+			break;
+			case 't' :
+					IDEAL_AUTO_SPEED += 10;
+					printf("nowsp=%d.\n",IDEAL_AUTO_SPEED);
+			break;
+			case 'u' :
+					IDEAL_AUTO_SPEED -= 10;
+					printf("nowsp=%d.\n",IDEAL_AUTO_SPEED);
 			break;
 			case '1' :
 				direction_x=-0.4;direction_y=0.4;

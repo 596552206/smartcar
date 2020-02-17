@@ -18,7 +18,6 @@
 #define SENSOR_RIGHT_MID GPIO_ReadInputDataBit(SENSOR_PORT,SENSOR_PIN_RIGHT_MID)
 
 #define IDEAL_OFFSET 5
-#define IDEAL_AUTO_SPEED 500
 
 void m_Sensor_Init(void);
 void get_offset(void);

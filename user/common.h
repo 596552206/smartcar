@@ -17,5 +17,8 @@ extern u8 car_offset;
 extern int car_direction;
 extern float car_k;
 extern float direction_x,direction_y;
-
+extern int kp_direction;
+extern int ki_direction;
+extern int kd_direction;
+extern short IDEAL_AUTO_SPEED;
 #endif
